@@ -1,0 +1,19 @@
+{
+  "name": "bir-regon",
+  "version": "0.1.0",
+  "description": "Polish legal company data query API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gelio/bir-regon.git"
+  },
+  "author": "Grzegorz Rozdzialik <voreny.gelio@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gelio/bir-regon/issues"
+  },
+  "homepage": "https://github.com/Gelio/bir-regon#readme"
+}
