@@ -12,6 +12,7 @@
   },
   "extends": "eslint:recommended",
   "rules": {
-    "semi": "warn"
+    "semi": "warn",
+    "no-unused-vars": "warn"
   }
 }
