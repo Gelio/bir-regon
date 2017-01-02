@@ -4,7 +4,9 @@
   "description": "Polish legal company data query API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint index.js",
+    "lint:cleanexit": "npm run --silent lint || true"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,14 @@
   "bugs": {
     "url": "https://github.com/Gelio/bir-regon/issues"
   },
-  "homepage": "https://github.com/Gelio/bir-regon#readme"
+  "homepage": "https://github.com/Gelio/bir-regon#readme",
+  "dependencies": {
+    "entities": "^1.1.1",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1",
+    "xml2js": "^0.4.17"
+  },
+  "devDependencies": {
+    "eslint": "^3.12.2"
+  }
 }
