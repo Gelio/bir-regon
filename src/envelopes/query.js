@@ -12,7 +12,7 @@ const queryEnvelope = `
       </ns:DaneSzukaj>
    </soap:Body>
 </soap:Envelope>
-`;
+`.trim();
 
 module.exports = class QueryEnvelope {
   constructor(destinationURL, NIP) {
@@ -22,7 +22,6 @@ module.exports = class QueryEnvelope {
 
   toString() {
     return queryEnvelope.replace('{{ DESTINATION_URL }}', this._destinationURL)
-    .replace('{{ NIP }}', this._NIP)
-    .trim();
+    .replace('{{ NIP }}', this._NIP);
   }
 };

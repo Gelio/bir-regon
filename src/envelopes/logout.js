@@ -10,7 +10,7 @@ const logoutEnvelope = `
       </ns:Wyloguj>
    </soap:Body>
 </soap:Envelope>
-`;
+`.trim();
 
 module.exports = class LogoutEnvelope {
   constructor(destinationURL, sessionID) {
@@ -21,6 +21,5 @@ module.exports = class LogoutEnvelope {
   toString() {
     return logoutEnvelope.replace('{{ DESTINATION_URL }}', this._destinationURL)
       .replace('{{ SESSION_ID }}', this._sessionID)
-      .trim();
   }
 };

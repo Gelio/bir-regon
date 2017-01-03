@@ -10,7 +10,7 @@ const loginEnvelope = `
       </ns:Zaloguj>
    </soap:Body>
 </soap:Envelope>
-`;
+`.trim();
 
 module.exports = class LoginEnvelope {
   constructor(destinationURL, apiKey) {
@@ -21,6 +21,5 @@ module.exports = class LoginEnvelope {
   toString() {
     return loginEnvelope.replace('{{ DESTINATION_URL }}', this._destinationURL)
       .replace('{{ API_KEY }}', this._apiKey)
-      .trim();
   }
 };
