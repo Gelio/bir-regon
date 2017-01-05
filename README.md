@@ -6,7 +6,7 @@ To use this package in production you need to get a private API key. See [Furthe
 
 # Example usage
 ``` javascript
-const BirAPI = require('bir-api');
+const BirAPI = require('bir-regon');
 
 let testURL = 'https://wyszukiwarkaregontest.stat.gov.pl/wsBIR/UslugaBIRzewnPubl.svc';
 let testApiKey = 'abcde12345abcde12345';
