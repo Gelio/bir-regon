@@ -1,6 +1,6 @@
 {
   "name": "bir-regon",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Polish legal company data query API",
   "main": "index.js",
   "scripts": {
