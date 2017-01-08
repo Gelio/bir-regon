@@ -81,19 +81,14 @@ module.exports = class BirAPI {
     if (!this.isAuthenticated()) {
       return Promise.reject();
     }
+    this._sessionID = null;
 
     let logoutEnvelope = new LogoutEnvelope(this._url, this._sessionID);
     let logoutHeaders = BirAPI._getRequestOptions(this._url, logoutEnvelope.toString(),
       this._sessionID);
 
     return rp(logoutHeaders)
-      .then(body => {
-        // TODO
-        console.log(body);
-      })
-      .then(() => {
-        this._sessionID = null;
-      })
+      .then(() => true);
   }
 
 
