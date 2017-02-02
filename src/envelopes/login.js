@@ -20,6 +20,6 @@ module.exports = class LoginEnvelope {
 
   toString() {
     return loginEnvelope.replace('{{ DESTINATION_URL }}', this._destinationURL)
-      .replace('{{ API_KEY }}', this._apiKey)
+      .replace('{{ API_KEY }}', this._apiKey);
   }
 };
