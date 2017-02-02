@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "lint": "eslint index.js",
-    "lint:cleanexit": "npm run --silent lint || true"
+    "lint": "eslint .",
+    "lint:cleanexit": "npm run --silent lint || true",
+    "coverage": "nyc --reporter=lcov npm test"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,8 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint": "^3.12.2",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "nyc": "^10.1.2"
   },
   "typings": "bir-regon.d.ts"
 }
