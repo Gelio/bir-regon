@@ -1,4 +1,8 @@
 # BIR Regon query API
+[![Build Status](https://travis-ci.org/Gelio/bir-regon.svg?branch=master)](https://travis-ci.org/Gelio/bir-regon)
+[![Code Climate](https://codeclimate.com/github/Gelio/bir-regon/badges/gpa.svg)](https://codeclimate.com/github/Gelio/bir-regon)
+[![Test Coverage](https://codeclimate.com/github/Gelio/bir-regon/badges/coverage.svg)](https://codeclimate.com/github/Gelio/bir-regon/coverage)
+[![Issue Count](https://codeclimate.com/github/Gelio/bir-regon/badges/issue_count.svg)](https://codeclimate.com/github/Gelio/bir-regon)
 
 Check publicly available data regarding legally registered companies in Poland.
 
