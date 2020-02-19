@@ -21,7 +21,8 @@ module.exports = class QueryEnvelope {
   }
 
   toString() {
-    return queryEnvelope.replace('{{ DESTINATION_URL }}', this._destinationURL)
-    .replace('{{ NIP }}', this._NIP);
+    return queryEnvelope
+      .replace('{{ DESTINATION_URL }}', this._destinationURL)
+      .replace('{{ NIP }}', this._NIP);
   }
 };

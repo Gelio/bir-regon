@@ -6,7 +6,6 @@ const { LoginEnvelope, LogoutEnvelope, QueryEnvelope } = require('./envelopes');
 const config = require('./config');
 
 module.exports = class BirAPI {
-
   /**
    * Creates an instance of BirAPI.
    *
@@ -17,7 +16,6 @@ module.exports = class BirAPI {
     this._sessionID = null;
   }
 
-
   /**
    * Tries to authenticate to the BIR database. Returns the session ID.
    *
@@ -26,19 +24,21 @@ module.exports = class BirAPI {
    */
   login(apiKey) {
     let loginEnvelope = new LoginEnvelope(this._url, apiKey);
-    let loginOptions = BirAPI._getRequestOptions(this._url, loginEnvelope.toString());
+    let loginOptions = BirAPI._getRequestOptions(
+      this._url,
+      loginEnvelope.toString()
+    );
 
     return rp(loginOptions)
-      .then(body => {
+      .then((body) => {
         let bodyParts = config.loginEnvRegex.exec(body);
         return bodyParts ? bodyParts[1] : Promise.reject('Invalid api key');
       })
-      .then(sessionID => {
+      .then((sessionID) => {
         this._sessionID = sessionID;
         return sessionID;
       });
   }
-
 
   /**
    * Queries the BIR database for a specific NIP. Returns parsed company's information.
@@ -52,24 +52,36 @@ module.exports = class BirAPI {
     }
 
     let queryEnvelope = new QueryEnvelope(this._url, nip);
-    let queryOptions = BirAPI._getRequestOptions(this._url, queryEnvelope.toString(),
-      this._sessionID);
+    let queryOptions = BirAPI._getRequestOptions(
+      this._url,
+      queryEnvelope.toString(),
+      this._sessionID
+    );
 
     return rp(queryOptions)
-      .then(body => {
+      .then((body) => {
         let results = config.queryEnvRegex.exec(body);
-        return results ? results[1] : Promise.reject('NIP not found or invalid');
+        return results
+          ? results[1]
+          : Promise.reject('NIP not found or invalid');
       })
       .then(entities.decodeXML.bind(entities))
-      .then(queryResultsString => new Promise((resolve, reject) =>
-        xml2js.parseString(queryResultsString, (err, result) => err ? reject(err) : resolve(result))
-      ))
-      .then(queryResultsWrapped => queryResultsWrapped['root']['dane'][0])
-      .then(queryResults => {
+      .then(
+        (queryResultsString) =>
+          new Promise((resolve, reject) =>
+            xml2js.parseString(queryResultsString, (err, result) =>
+              err ? reject(err) : resolve(result)
+            )
+          )
+      )
+      .then((queryResultsWrapped) => queryResultsWrapped['root']['dane'][0])
+      .then((queryResults) => {
         let result = {};
         for (let key in queryResults) {
           if (queryResults.hasOwnProperty(key)) {
-            result[key] = Array.isArray(queryResults[key]) ? queryResults[key][0] : queryResults[key];
+            result[key] = Array.isArray(queryResults[key])
+              ? queryResults[key][0]
+              : queryResults[key];
           }
         }
 
@@ -84,13 +96,14 @@ module.exports = class BirAPI {
     this._sessionID = null;
 
     let logoutEnvelope = new LogoutEnvelope(this._url, this._sessionID);
-    let logoutHeaders = BirAPI._getRequestOptions(this._url, logoutEnvelope.toString(),
-      this._sessionID);
+    let logoutHeaders = BirAPI._getRequestOptions(
+      this._url,
+      logoutEnvelope.toString(),
+      this._sessionID
+    );
 
-    return rp(logoutHeaders)
-      .then(() => true);
+    return rp(logoutHeaders).then(() => true);
   }
-
 
   /**
    * Checks if session ID already exists.
@@ -100,7 +113,6 @@ module.exports = class BirAPI {
   isAuthenticated() {
     return !!this._sessionID;
   }
-
 
   /**
    * Prepares request options, fills in the URL, body and session ID if provided.

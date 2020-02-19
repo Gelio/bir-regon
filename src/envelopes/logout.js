@@ -19,7 +19,8 @@ module.exports = class LogoutEnvelope {
   }
 
   toString() {
-    return logoutEnvelope.replace('{{ DESTINATION_URL }}', this._destinationURL)
+    return logoutEnvelope
+      .replace('{{ DESTINATION_URL }}', this._destinationURL)
       .replace('{{ SESSION_ID }}', this._sessionID);
   }
 };

@@ -16,7 +16,10 @@ describe('Envelopes', function() {
 
   describe('logout', function() {
     it('should contain provided destination URL and session ID', function() {
-      let logoutEnvelope = new LogoutEnvelope('http://example.com', 'r48gjgh28sevc');
+      let logoutEnvelope = new LogoutEnvelope(
+        'http://example.com',
+        'r48gjgh28sevc'
+      );
       expect(logoutEnvelope.toString()).to.contain('http://example.com');
       expect(logoutEnvelope.toString()).to.contain('r48gjgh28sevc');
     });
