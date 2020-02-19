@@ -28,7 +28,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint": "^3.12.2",
-    "mocha": "^3.2.0",
+    "mocha": "^7.0.1",
     "nyc": "^15.0.0"
   },
   "typings": "bir-regon.d.ts"
