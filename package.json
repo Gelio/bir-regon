@@ -29,7 +29,7 @@
     "chai": "^3.5.0",
     "eslint": "^3.12.2",
     "mocha": "^3.2.0",
-    "nyc": "^10.1.2"
+    "nyc": "^15.0.0"
   },
   "typings": "bir-regon.d.ts"
 }
